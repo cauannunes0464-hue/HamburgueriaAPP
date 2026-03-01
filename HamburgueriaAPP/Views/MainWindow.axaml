@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:HamburgueriaAPP.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="HamburgueriaAPP.Views.MainWindow"
+        x:DataType="vm:ClienteViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="HamburgueriaAPP">
+
+    <Design.DataContext>  
+        <vm:ClienteViewModel/>
+    </Design.DataContext>
+
+    <StackPanel Margin="20" Spacing="5">
+
+        <TextBlock Text="Cadastro de Clinte"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+
+        <TextBox Watermark="Nome"
+                  Text="{Binding Nome, Mode=TwoWay}"
+                  Width= "220"/>
+        
+        <TextBox Watermark="Email"
+                 Text="{Binding Email, Mode=TwoWay}"
+                 Width= "220"/>
+        
+        <TextBox Watermark="Telefone"
+                 Text="{Binding Telefone, Mode=TwoWay}"
+                 Width="220"/>
+
+        <Button Content="Adicionar"
+                Command="{Binding AdicionarClienteCommand}"
+                HorizontalAlignment="Center"/>
+
+
+        <ListBox ItemsSource="{Binding Clientes}"
+                 SelectedItem="{Binding ClienteSelecionado, Mode=TwoWay}"/>
+
+        <Button Content="Remover"
+                Command="{Binding RemoverClienteCommand}"
+                IsVisible="{Binding TemClienteSelecionado}"
+                HorizontalAlignment="Center"/>
+
+    </StackPanel>
+
+</Window>
