@@ -7,7 +7,7 @@ namespace HamburgueriaAPP.ViewModels
     {
         public event PropertyChangedEventHandler? PropertyChanged;     // Evento que é disparado quando uma propriedade é alterada
 
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null) // Método protegido para disparar o evento PropertyChanged, usando CallerMemberName para obter o nome da propriedade automaticamente
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

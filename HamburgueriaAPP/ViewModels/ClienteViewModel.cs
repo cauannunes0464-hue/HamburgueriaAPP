@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using HamburgueriaAPP.Models;
+using HamburgueriaAPP.Domain;
 
 namespace HamburgueriaAPP.ViewModels
 {
@@ -9,7 +9,7 @@ namespace HamburgueriaAPP.ViewModels
     public class ClienteViewModel : ViewModelBase
     {
         
-        public ObservableCollection<Cliente> Clientes { get; set; }
+        public ObservableCollection<Cliente> Clientes { get; set; } 
 
         private string _nome = string.Empty;
         public string Nome
@@ -31,7 +31,7 @@ namespace HamburgueriaAPP.ViewModels
             set
             {
                 _telefone = value;
-                OnPropertyChanged(nameof(Telefone));
+                OnPropertyChanged(nameof(Telefone)); 
 
                 AtualizarEstadoDoBotao();
             }
@@ -51,29 +51,6 @@ namespace HamburgueriaAPP.ViewModels
             }
         }
 
-        public ClienteViewModel()
-        {
-            Clientes = new ObservableCollection<Cliente>();
-
-            AdicionarClienteCommand = new RelayCommand(
-                AdicionarOuAtualizarCliente,
-                PodeAdicionarCliente
-                );
-
-            RemoverClienteCommand = new RelayCommand(
-                RemoverCliente,
-                PodeRemoverCliente
-                );
-        }
-
-        private bool EmailValido(string email)
-        {
-            if (string.IsNullOrWhiteSpace(email))
-                return false;
-
-            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            return Regex.IsMatch(email, pattern); // 
-        }
 
         public RelayCommand AdicionarClienteCommand { get; }
         private void AdicionarOuAtualizarCliente()
@@ -86,14 +63,13 @@ namespace HamburgueriaAPP.ViewModels
 
             else
             {
-                ClienteSelecionado.Nome = Nome;
-                ClienteSelecionado.Telefone = Telefone;
-                ClienteSelecionado.Email = Email;
+                ClienteSelecionado.AtualizarDados(Nome, Telefone, Email);
             }
 
             LimparCampos();
 
         }
+
         private bool PodeAdicionarCliente()
         {
             return
@@ -102,16 +78,25 @@ namespace HamburgueriaAPP.ViewModels
                 EmailValido(Email);
         }
 
-        private void AtualizarEstadoDoBotao()
+        public RelayCommand RemoverClienteCommand { get; }
+        private void RemoverCliente()
         {
-            AdicionarClienteCommand.NotifyCanExecuteChanged();
-            RemoverClienteCommand.NotifyCanExecuteChanged();
+            if (ClienteSelecionado != null)
+            {
+                Clientes.Remove(ClienteSelecionado);
+            }
         }
+
+        private bool PodeRemoverCliente()
+        {
+            return ClienteSelecionado != null;
+        }
+
 
         public bool TemClienteSelecionado => ClienteSelecionado != null;
 
-        private Cliente? _clienteSelecionado;
-        public Cliente? ClienteSelecionado
+        private Cliente? _clienteSelecionado; 
+        public Cliente? ClienteSelecionado 
         {
             get => _clienteSelecionado;
             set
@@ -133,18 +118,35 @@ namespace HamburgueriaAPP.ViewModels
             }
         }
 
-        public RelayCommand RemoverClienteCommand { get; }
-        private void RemoverCliente()
+        private bool EmailValido(string email)
         {
-            if (ClienteSelecionado != null)
-            {
-                Clientes.Remove(ClienteSelecionado);
-            }
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern); // 
         }
 
-        private bool PodeRemoverCliente()
+        public ClienteViewModel()
         {
-            return ClienteSelecionado != null;
+            Clientes = new ObservableCollection<Cliente>();
+
+            AdicionarClienteCommand = new RelayCommand(
+                AdicionarOuAtualizarCliente,
+                PodeAdicionarCliente
+                );
+
+            RemoverClienteCommand = new RelayCommand(
+                RemoverCliente,
+                PodeRemoverCliente
+                );
+        }
+
+        
+        private void AtualizarEstadoDoBotao()
+        {
+            AdicionarClienteCommand.NotifyCanExecuteChanged();
+            RemoverClienteCommand.NotifyCanExecuteChanged();
         }
 
         private void LimparCampos()
@@ -155,7 +157,6 @@ namespace HamburgueriaAPP.ViewModels
 
             ClienteSelecionado = null;
         }
-
     }
 }
 
