@@ -14,14 +14,18 @@ namespace HamburgueriaAPP.Domain.Entities
 
         private readonly List<ItemPedido> _itens;
 
+        private readonly List<Pagamento> _pagamentos = new();
+
+
         public Guid Id { get; private set; }
         public int Numero { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public StatusPedido Status { get; private set; }
         public Cliente? Cliente { get; private set; }
 
-        public IReadOnlyCollection<ItemPedido> Itens => _itens;
 
+        public IReadOnlyCollection<ItemPedido> Itens => _itens;
+        public IReadOnlyCollection<Pagamento> Pagamentos => _pagamentos;
 
         public Pedido(int numero, Cliente? cliente = null)
         {
@@ -36,19 +40,21 @@ namespace HamburgueriaAPP.Domain.Entities
         {
             if(Status != StatusPedido.Aberto) 
             { 
-                throw new InvalidOperationException("git .");
+                throw new InvalidOperationException("Não é possível alterar pedido finalizado ou cancelado.");
             }
 
             var itemExistente = _itens.FirstOrDefault( _itens => _itens.ProdutoId == produto.Id);
 
-            if(itemExistente != null)
+            // FirstOrDefault retorna o primeiro item que corresponde à condição ou null se nenhum item for encontrado.
+
+            if (itemExistente != null)
             {
                 itemExistente.AumentantarQuantidade(quantidade);
             }
 
             else
             {
-                var itemPedido = new ItemPedido(produto, quantidade);
+                var itemPedido = new ItemPedido(produto, quantidade); // Criar um novo item de pedido com base no produto e na quantidade
                 _itens.Add(itemPedido);
             }
 
@@ -61,7 +67,7 @@ namespace HamburgueriaAPP.Domain.Entities
                 throw new InvalidOperationException("Não é possível remover itens de um pedido que não está aberto.");
             }
 
-            var item = _itens.FirstOrDefault(i => i.ProdutoId == produtoId); // Encontrar o item pelo ID do produto
+            var item = _itens.FirstOrDefault(itens => itens.ProdutoId == produtoId); // Encontrar o item pelo ID do produto
 
             if (item == null)
             {
@@ -103,9 +109,39 @@ namespace HamburgueriaAPP.Domain.Entities
             Status = StatusPedido.Cancelado;
         }
 
+        public void RegistrarPagamento(Pagamento pagamento)
+        {
+            if (Status != StatusPedido.Aberto)
+            {
+                throw new InvalidOperationException("Só é possível pagar pedido aberto.");
+            }
 
+            else
+            {
+                decimal restante = ValorRestante();
+
+                pagamento.ConfirmarPagamento(restante);
+
+                _pagamentos.Add(pagamento);
+
+
+                if (ValorRestante() <= 0)
+                    FinalizarPedido();
+
+            }
+        }
+
+        public decimal TotalPago()
+        {
+            return _pagamentos.Where(pagamento => pagamento.Status == StatusPagamento.Pago).Sum(pagamento => pagamento.Valor);
+                                                  // Para cada pagamento na lista de pagamentos, verifica se o status é "Pago" e, se for, soma o valor do pagamento. O resultado é o total pago para o pedido.
+        }
+
+        public decimal ValorRestante()
+        {
+            return CalcularTotal() - TotalPago();
+        }
 
     }
 }
 
-// git commit -m "Implementação da classe Pedido com funcionalidades de adicionar, remover itens, calcular total, finalizar e cancelar pedidos.

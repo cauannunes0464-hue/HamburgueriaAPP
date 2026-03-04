@@ -16,7 +16,7 @@ namespace HamburgueriaAPP.Domain.Entities
         {
             if (produto == null)
             {
-                throw new ArgumentNullException(nameof(produto), "O produto não pode ser nulo.");
+                throw new ArgumentNullException("O produto não pode ser nulo.");
             }
 
             if (!produto.Ativo)

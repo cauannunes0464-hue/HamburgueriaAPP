@@ -48,6 +48,7 @@ namespace HamburgueriaAPP.Domain.Entities
             Nome = nome;
             Telefone = telefone;
             Email = email;
+
         }
 
 
