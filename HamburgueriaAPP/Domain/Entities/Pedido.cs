@@ -12,7 +12,7 @@ namespace HamburgueriaAPP.Domain.Entities
     public class Pedido
     {
 
-        private readonly List<ItemPedido> _itens;
+        private readonly List<ItemPedido> _itens = new();
 
         private readonly List<Pagamento> _pagamentos = new();
 
@@ -43,7 +43,7 @@ namespace HamburgueriaAPP.Domain.Entities
                 throw new InvalidOperationException("Não é possível alterar pedido finalizado ou cancelado.");
             }
 
-            var itemExistente = _itens.FirstOrDefault( _itens => _itens.ProdutoId == produto.Id);
+            var itemExistente = _itens.FirstOrDefault(item => item.ProdutoId == produto.Id);
 
             // FirstOrDefault retorna o primeiro item que corresponde à condição ou null se nenhum item for encontrado.
 
@@ -67,7 +67,7 @@ namespace HamburgueriaAPP.Domain.Entities
                 throw new InvalidOperationException("Não é possível remover itens de um pedido que não está aberto.");
             }
 
-            var item = _itens.FirstOrDefault(itens => itens.ProdutoId == produtoId); // Encontrar o item pelo ID do produto
+            var item = _itens.FirstOrDefault(item => item.ProdutoId == produtoId); // Encontrar o item pelo ID do produto
 
             if (item == null)
             {
@@ -84,7 +84,7 @@ namespace HamburgueriaAPP.Domain.Entities
 
         public decimal CalcularTotal()
         {
-            return _itens.Sum(p  => p.Subtotal());
+            return _itens.Sum(item  => item.Subtotal());
         }
 
         public void FinalizarPedido()
@@ -125,7 +125,7 @@ namespace HamburgueriaAPP.Domain.Entities
                 _pagamentos.Add(pagamento);
 
 
-                if (ValorRestante() <= 0)
+                if (ValorRestante() == 0)
                     FinalizarPedido();
 
             }

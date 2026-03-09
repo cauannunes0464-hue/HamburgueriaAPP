@@ -12,6 +12,17 @@ namespace HamburgueriaAPP.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        protected bool SetProperty <T> (ref T campo, T valor, [CallerMemberName] string? nome = null)
+        {
+            if (Equals(campo, valor))
+                return false;
+
+            campo = valor;
+
+            OnPropertyChanged(nome);
+
+            return true;
+        }
     }
 
 }

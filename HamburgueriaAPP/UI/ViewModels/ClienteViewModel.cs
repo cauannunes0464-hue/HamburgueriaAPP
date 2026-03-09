@@ -6,7 +6,7 @@ using HamburgueriaAPP.Domain;
 namespace HamburgueriaAPP.ViewModels
 {
     
-    public class ClienteViewModel : ViewModelBase
+    public class ClienteViewModel : 
     {
         
         public ObservableCollection<Cliente> Clientes { get; set; } 
