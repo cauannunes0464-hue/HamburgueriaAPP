@@ -1,155 +1,211 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:HamburgueriaAPP.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="800"
-        x:Class="HamburgueriaAPP.Views.MainWindow"
-        x:DataType="vm:ClienteViewModel"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:vm="using:HamburgueriaAPP.ViewModels"
+		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="800"
+		x:Class="HamburgueriaAPP.Views.MainWindow"
+		x:DataType="vm:ClienteViewModel"
 
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaChromeHints="NoChrome"
-        ExtendClientAreaTitleBarHeightHint="35"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="NoChrome"
+		ExtendClientAreaTitleBarHeightHint="35"
 
-        Icon="/Assets/avalonia-logo.ico"
-        Title="HamburgueriaAPP">
+		Icon="/Assets/avalonia-logo.ico"
+		Title="HamburgueriaAPP">
 
-    <Design.DataContext>  
-        <vm:ClienteViewModel/>
-    </Design.DataContext>
+	<Design.DataContext>
+		<vm:ClienteViewModel/>
+	</Design.DataContext>
 
-    <Grid RowDefinitions="35,70,140,*,15">
+	<Grid RowDefinitions="35,70,140,*,20">
 
-        <!-- Barra de Controle 35px-->
-        <Border Grid.Row="0" Background="#000000" >
-			
-            <DockPanel>
-				
-                <TextBlock
-                    Text="Sistema Caixa"
-                    Margin="12"
-                    Foreground="White"
-                    FontSize="12"
-                    VerticalAlignment="Center"/>
+		<!-- Barra de Controle 35px-->
 
-                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
+		<Border Grid.Row="0" Background="#000000" >
 
-                    <Button Content="—" Width="40"/>
-                    <Button Content="□" Width="40"/>
-                    <Button Content="X" Width="40"/>
+			<DockPanel>
 
-                </StackPanel>
+				<TextBlock
+				Text="Sistema Caixa"
+				Margin="12"
+				Foreground="White"
+				FontSize="12"
+				VerticalAlignment="Center"/>
 
-            </DockPanel>
+				<StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
 
-        </Border>
+					<Button Content="—" Width="40"/>
+					<Button Content="□" Width="40"/>
+					<Button Content="X" Width="40"/>
 
+				</StackPanel>
 
-        <!-- Barra Nome Hamburgueria 70px -->
-        <Border Grid.Row="1"
-                Margin="0"
-                Background="#202020"
-                BorderBrush="#4A4A52"
-                BorderThickness="0,0,0,4">
+			</DockPanel>
 
-            <TextBlock
-                Text="Burguer House"
-                Margin="12,0,0,0"
-                Foreground="White"
-                FontSize="42"
-                VerticalAlignment="Center"/>
-   
-        </Border>
+		</Border>
 
 
- <!-- Grid 70% 30% de Grupos -->
+		<!-- Barra Nome Hamburgueria 70px -->
+		<Border Grid.Row="1"
+				Margin="0"
+				Background="#202020"
+				BorderBrush="#4A4A52"
+				BorderThickness="0,0,0,4">
 
-        <Grid Grid.Row="2" ColumnDefinitions="7*,3*">
+			<TextBlock
+			Text="Burguer House"
+			Margin="12,0,0,0"
+			Foreground="White"
+			FontSize="42"
+			VerticalAlignment="Center"/>
 
-            <Border
-
-                Grid.Column="0"
-                        Margin="0"
-                        Background="#202020"
-                        BorderBrush="#4A4A52"
-                        BorderThickness="0,0,4,0">
-				
-
-                   <!-- Grupo 70%  140px  -->
-                   <StackPanel>
-
-
-                    <!-- Conteúdo do Grupo 70% -->
-                        <TextBlock Text="Grupo 70%"
-                           FontSize="18"
-                           Margin="12"
-                           Foreground="White"/>
-
-                   </StackPanel>
-
-            </Border>
-            
+		</Border>
 
 
- <!-- Grupo 30% (Somente uma Barra lateral que colocara todos os botoes) -->
+		<!-- Grid 70% 140px -->
 
-            <Border
+		<Grid Grid.Row="2" ColumnDefinitions="7*,3*">
 
-                Grid.Column="1" 
-                        Height="680" 
-                        VerticalAlignment="Top"
-                        Margin="0"
-                        Background="#2F2F2F">
-                
-                
-                <StackPanel>
+			<Border
 
-
-                    <!-- Conteúdo do Grupo 30% -->
-                    <TextBlock Text="Codigo do Produto"
-                               FontSize="18" 
-                               Margin="12"
-                               Foreground="White"/>
-
-                </StackPanel>
-
-           </Border>
-
-        </Grid>
+			Grid.Column="0"
+			Margin="0"
+			Background="#202020"
+			BorderBrush="#4A4A52"
+			BorderThickness="0,0,2,4">
 
 
-            <!-- Grupo 70%  540px  -->
-            <Grid Grid.Row="3" ColumnDefinitions="7*,3*">
-            
+				<!-- Conteúdo do Grupo 70% -->
+				<StackPanel>
 
-                <StackPanel Grid.Column="0"
-                            Margin="0,2,2,0"
-                            Background="#202020">
+					<TextBlock Text="Grupo 70%"
+							   FontSize="18"
+							   Margin="12"
+							   Foreground="White"/>
 
+				</StackPanel>
 
-                    <!-- Conteúdo do Grupo 70% -->
-                    <TextBlock Text="Grupo 70%"
-                               FontSize="18"
-                               Margin="12"
-                               Foreground="White"/>
+			</Border>
 
 
-                </StackPanel>
 
-        </Grid>
+			<!-- Grupo 30% (Somente uma Barra lateral que colocara todos os botoes) -->
 
+			<Border
 
-            <Border Grid.Row="4" Background="#000000" Margin="0,0,0,0">
-                <TextBlock Text="Rodapé"
-                           Margin="12,0,0,0"
-                           Foreground="White"
-                           FontSize="10"
-                           VerticalAlignment="Center"/>
-
-           </Border>
+			Grid.Column="1"
+			Height="680"
+			VerticalAlignment="Top"
+			Margin="0"
+			Background="#2F2F2F">
 
 
-    </Grid>
+				<StackPanel>
 
+					<!-- Conteúdo do Grupo 30% -->
+					<TextBlock Text="Codigo"
+							   FontSize="18"
+							   Margin="22,65,0,8"
+							   Foreground="White"/>
+
+
+					<!-- Vão ser os Botões Depois-->
+					<Grid RowDefinitions="38, 38, 300, 90"
+
+						Grid.Row="0" ColumnDefinitions="4*,4*">
+
+						<Border Grid.Row="0"
+								Width="165"
+								Margin="0,0,0,0"
+								Background="#202020"
+								BorderBrush="#4A4A52"
+								BorderThickness="2">
+
+						</Border>
+
+
+						<StackPanel>
+
+							<TextBlock Text=""
+									   VerticalAlignment="Center"
+									   HorizontalAlignment="Center"
+									   Foreground="White"/>
+
+						</StackPanel>
+
+
+						<Border Grid.Column="1"
+								Width="100"
+								Margin="0"
+								Background="#202020"
+								BorderBrush="#4A4A52"
+								BorderThickness="2">
+
+						</Border>
+
+						<StackPanel>
+						
+						
+						
+						
+						
+						</StackPanel>
+
+					</Grid>
+
+				</StackPanel>
+
+			</Border>
+
+		</Grid>
+
+
+
+		<!-- Grupo 70%  540px  -->
+
+		<Grid Grid.Row="3" ColumnDefinitions="7*,3*">
+
+			<Border
+
+			Grid.Column="0"
+			Margin="0"
+			Background="#202020"
+			BorderBrush="#4A4A52"
+			BorderThickness="0,0,2,0">
+
+
+				<StackPanel>
+
+					<!-- Conteúdo do Grupo 70% -->
+					<TextBlock Text="Grupo 70%"
+							   FontSize="18"
+							   Margin="12"
+							   Foreground="White"/>
+
+
+				</StackPanel>
+
+			</Border>
+
+		</Grid>
+
+
+		<Border Grid.Row="4"
+				Margin="0"
+				Background="#000000"
+				BorderBrush="#4A4A52"
+				BorderThickness="0,2,0,0">
+
+
+			<TextBlock Text="..."
+					   Margin="12,0,0,0"
+					   Foreground="White"
+					   FontSize="10"
+					   VerticalAlignment="Center"/>
+
+		</Border>
+
+	</Grid>
 
 </Window>
