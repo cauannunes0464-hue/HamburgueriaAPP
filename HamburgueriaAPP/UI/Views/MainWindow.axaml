@@ -3,9 +3,14 @@
         xmlns:vm="using:HamburgueriaAPP.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="800"
         x:Class="HamburgueriaAPP.Views.MainWindow"
         x:DataType="vm:ClienteViewModel"
+
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="35"
+
         Icon="/Assets/avalonia-logo.ico"
         Title="HamburgueriaAPP">
 
@@ -13,39 +18,138 @@
         <vm:ClienteViewModel/>
     </Design.DataContext>
 
-    <StackPanel Margin="20" Spacing="5">
+    <Grid RowDefinitions="35,70,140,*,15">
 
-        <TextBlock Text="Cadastro de Clinte"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   HorizontalAlignment="Center"
-                   Margin="0,0,0,10"/>
+        <!-- Barra de Controle 35px-->
+        <Border Grid.Row="0" Background="#000000" >
+			
+            <DockPanel>
+				
+                <TextBlock
+                    Text="Sistema Caixa"
+                    Margin="12"
+                    Foreground="White"
+                    FontSize="12"
+                    VerticalAlignment="Center"/>
 
-        <TextBox Watermark="Nome"
-                  Text="{Binding Nome, Mode=TwoWay}"
-                  Width= "220"/>
-        
-        <TextBox Watermark="Email"
-                 Text="{Binding Email, Mode=TwoWay}"
-                 Width= "220"/>
-        
-        <TextBox Watermark="Telefone"
-                 Text="{Binding Telefone, Mode=TwoWay}"
-                 Width="220"/>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
 
-        <Button Content="Adicionar"
-                Command="{Binding AdicionarClienteCommand}"
-                HorizontalAlignment="Center"/>
+                    <Button Content="—" Width="40"/>
+                    <Button Content="□" Width="40"/>
+                    <Button Content="X" Width="40"/>
+
+                </StackPanel>
+
+            </DockPanel>
+
+        </Border>
 
 
-        <ListBox ItemsSource="{Binding Clientes}"
-                 SelectedItem="{Binding ClienteSelecionado, Mode=TwoWay}"/>
+        <!-- Barra Nome Hamburgueria 70px -->
+        <Border Grid.Row="1"
+                Margin="0"
+                Background="#202020"
+                BorderBrush="#4A4A52"
+                BorderThickness="0,0,0,4">
 
-        <Button Content="Remover"
-                Command="{Binding RemoverClienteCommand}"
-                IsVisible="{Binding TemClienteSelecionado}"
-                HorizontalAlignment="Center"/>
+            <TextBlock
+                Text="Burguer House"
+                Margin="12,0,0,0"
+                Foreground="White"
+                FontSize="42"
+                VerticalAlignment="Center"/>
+   
+        </Border>
 
-    </StackPanel>
+
+ <!-- Grid 70% 30% de Grupos -->
+
+        <Grid Grid.Row="2" ColumnDefinitions="7*,3*">
+
+            <Border
+
+                Grid.Column="0"
+                        Margin="0"
+                        Background="#202020"
+                        BorderBrush="#4A4A52"
+                        BorderThickness="0,0,4,0">
+				
+
+                   <!-- Grupo 70%  140px  -->
+                   <StackPanel>
+
+
+                    <!-- Conteúdo do Grupo 70% -->
+                        <TextBlock Text="Grupo 70%"
+                           FontSize="18"
+                           Margin="12"
+                           Foreground="White"/>
+
+                   </StackPanel>
+
+            </Border>
+            
+
+
+ <!-- Grupo 30% (Somente uma Barra lateral que colocara todos os botoes) -->
+
+            <Border
+
+                Grid.Column="1" 
+                        Height="680" 
+                        VerticalAlignment="Top"
+                        Margin="0"
+                        Background="#2F2F2F">
+                
+                
+                <StackPanel>
+
+
+                    <!-- Conteúdo do Grupo 30% -->
+                    <TextBlock Text="Codigo do Produto"
+                               FontSize="18" 
+                               Margin="12"
+                               Foreground="White"/>
+
+                </StackPanel>
+
+           </Border>
+
+        </Grid>
+
+
+            <!-- Grupo 70%  540px  -->
+            <Grid Grid.Row="3" ColumnDefinitions="7*,3*">
+            
+
+                <StackPanel Grid.Column="0"
+                            Margin="0,2,2,0"
+                            Background="#202020">
+
+
+                    <!-- Conteúdo do Grupo 70% -->
+                    <TextBlock Text="Grupo 70%"
+                               FontSize="18"
+                               Margin="12"
+                               Foreground="White"/>
+
+
+                </StackPanel>
+
+        </Grid>
+
+
+            <Border Grid.Row="4" Background="#000000" Margin="0,0,0,0">
+                <TextBlock Text="Rodapé"
+                           Margin="12,0,0,0"
+                           Foreground="White"
+                           FontSize="10"
+                           VerticalAlignment="Center"/>
+
+           </Border>
+
+
+    </Grid>
+
 
 </Window>

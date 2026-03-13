@@ -1,12 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
-using HamburgueriaAPP.Domain;
+using HamburgueriaAPP.Domain.Entities;
 
 namespace HamburgueriaAPP.ViewModels
 {
     
-    public class ClienteViewModel : 
+    public class ClienteViewModel : ViewModelBase
     {
         
         public ObservableCollection<Cliente> Clientes { get; set; } 
