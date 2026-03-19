@@ -47,6 +47,7 @@
 
 
 		<!-- Barra Nome Hamburgueria 70px -->
+
 		<Border Grid.Row="1"
 				Margin="0"
 				Background="#202020"
@@ -86,6 +87,7 @@
 
 				</StackPanel>
 
+
 			</Border>
 
 
@@ -93,64 +95,76 @@
 			<!-- Grupo 30% (Somente uma Barra lateral que colocara todos os botoes) -->
 
 			<Border
+				Grid.Column="1"
+				Height="680"
+				VerticalAlignment="Top"
+				Background="#2F2F2F">
 
-			Grid.Column="1"
-			Height="680"
-			VerticalAlignment="Top"
-			Margin="0"
-			Background="#2F2F2F">
+				<StackPanel Margin="12,60,12,0">
 
+					<!-- Títulos -->
+					<Grid ColumnDefinitions="5*,5*">
 
-				<StackPanel>
+						<TextBlock
+						Grid.Column="0"
+						Text="Codigo"
+						FontSize="20"
+						Foreground="White"/>
 
-					<!-- Conteúdo do Grupo 30% -->
-					<TextBlock Text="Codigo"
-							   FontSize="18"
-							   Margin="22,65,0,8"
-							   Foreground="White"/>
+						<TextBlock
+						Grid.Column="1"
+						Text="Valor"
+						Margin="60,0,12,0"
+						FontSize="20"
+						Foreground="White"/>
 
+					</Grid>
 
-					<!-- Vão ser os Botões Depois-->
-					<Grid RowDefinitions="38, 38, 300, 90"
+					<!-- Campos -->
+					<Grid ColumnDefinitions="5*,5*">
 
-						Grid.Row="0" ColumnDefinitions="4*,4*">
+						<!-- Campo Codigo -->
+						<Grid Grid.Column="0" ColumnDefinitions="170,30">
 
-						<Border Grid.Row="0"
-								Width="165"
-								Margin="0,0,0,0"
-								Background="#202020"
-								BorderBrush="#4A4A52"
-								BorderThickness="2">
+							<AutoCompleteBox
+							Grid.Column="0"
+							Watermark="Buscar Produto"
+							Margin="0,2,5,0"
+							Background="#202020"
+							BorderBrush="#4A4A52"
+							BorderThickness="2"/>
 
-						</Border>
+							<Button
+							Grid.Column="1"
+							Width="35"
+							Height="30"
+							Background="#202020"
+							BorderBrush="#4A4A52"
+							BorderThickness="2"/>
 
+						</Grid>
 
-						<StackPanel>
+						<!-- Campo Valor -->
+						<Grid Grid.Column="1" ColumnDefinitions="*,30">
 
-							<TextBlock Text=""
-									   VerticalAlignment="Center"
-									   HorizontalAlignment="Center"
-									   Foreground="White"/>
+							<TextBox
+							Grid.Column="0"
+							Watermark="Valor"
+							Margin="60,2,5,0"
+							Background="#202020"
+							BorderBrush="#4A4A52"
+							BorderThickness="2"/>
 
-						</StackPanel>
+							<Button
+							Grid.Column="1"
+							Width="35"
+							Height="30"
+							Margin="0,0,12,0"
+							Background="#202020"
+							BorderBrush="#4A4A52"
+							BorderThickness="2"/>
 
-
-						<Border Grid.Column="1"
-								Width="100"
-								Margin="0"
-								Background="#202020"
-								BorderBrush="#4A4A52"
-								BorderThickness="2">
-
-						</Border>
-
-						<StackPanel>
-						
-						
-						
-						
-						
-						</StackPanel>
+						</Grid>
 
 					</Grid>
 
@@ -159,8 +173,6 @@
 			</Border>
 
 		</Grid>
-
-
 
 		<!-- Grupo 70%  540px  -->
 
@@ -203,6 +215,7 @@
 					   Foreground="White"
 					   FontSize="10"
 					   VerticalAlignment="Center"/>
+
 
 		</Border>
 
