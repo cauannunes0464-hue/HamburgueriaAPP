@@ -10,6 +10,12 @@
     </Application.DataTemplates>
   
     <Application.Styles>
-        <FluentTheme />
+
+        <FluentTheme/>
+
+        <StyleInclude Source="avares://HamburgueriaAPP/UI/Style/Button.axaml"/>
+
     </Application.Styles>
+
+
 </Application>
