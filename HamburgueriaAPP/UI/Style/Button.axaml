@@ -1,35 +1,107 @@
-﻿<Styles xmlns="https://github.com/avaloniaui">
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- botão -->
-    <Style Selector="Button">
-        <Setter Property="Background" Value="#202020"/>
-        <Setter Property="BorderBrush" Value="#4A4A52"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="4"/>
-        <Setter Property="Padding" Value="10,6"/>
-    </Style>
+	<Style Selector="Button.productCard">
 
+		<Setter Property="Width" Value="160"/>
+		<Setter Property="Height" Value="140"/>
+		<Setter Property="Margin" Value="8"/>
+		<Setter Property="CornerRadius" Value="12"/>
+		<Setter Property="Foreground" Value="#888"/>
+		<Setter Property="Background" Value="#1A1A1A"/>
+		<Setter Property="BorderBrush" Value="#333"/>
+		<Setter Property="BorderThickness" Value="1"/>
 
-    <!-- texto -->
-    <Style Selector="Button TextBlock">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontFamily" Value="Poppins"/>
-    </Style>
+	</Style>
 
-
-    <!-- hover do botão -->
-     <Style Selector="Button:pointerover /template/ ContentPresenter">
-        <Setter Property="Background" Value="#373737"/>
-        <Setter Property="BorderBrush" Value="#4A4A52"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="CornerRadius" Value="4"/>
-    
-    </Style>
+	<Style Selector="Button:pointerover /template/ ContentPresenter">
+		<Setter Property="Background" Value="#222"/>
+		<Setter Property="Foreground" Value="White"/>
+	</Style>
 
 
-    <!-- hover do texto -->
-    <Style Selector="Button:pointerover TextBlock">
-        <Setter Property="Foreground" Value="#BD9E88"/>
-    </Style>
+
+	<Style Selector="RadioButton.filter">
+
+		<Setter Property="Height" Value="50"/>
+		<Setter Property="Margin" Value="4"/>
+		<Setter Property="Background" Value="#252525"/>
+		<Setter Property="Foreground" Value="#B8B8B8"/>
+		<Setter Property="BorderBrush" Value="#333"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="Template">
+
+			<ControlTemplate>
+
+				<Border Background="{TemplateBinding Background}"
+						BorderBrush="{TemplateBinding BorderBrush}"
+						BorderThickness="{TemplateBinding BorderThickness}"
+						CornerRadius="4">
+
+					<ContentPresenter Content="{TemplateBinding Content}"
+									  HorizontalAlignment="Center"
+									  VerticalAlignment="Center"
+									  Margin="10,0"/>
+
+				</Border>
+
+			</ControlTemplate>
+
+		</Setter>
+
+	</Style>
+
+
+
+
+	<Style Selector="RadioButton.filter:checked">
+		<Setter Property="Background" Value="#1A1A1A"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="BorderBrush" Value="#3980FA"/>
+	</Style>
+
+
+
+		<Style Selector="RadioButton:pointerover /template/ ContentPresenter">
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="Background" Value="#222"/>
+
+	</Style>
+
+
+
+
+
+	<Style Selector="TabItem:selected">
+		<Setter Property="Foreground" Value="White"/>
+	</Style>
+
+
+	<Style Selector="TabItem">
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="MinHeight" Value="50"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="Foreground" Value="#444"/>
+	</Style>
+
+
+
+	<Style Selector="TabItem:pointerover /template/ ContentPresenter">
+		<Setter Property="Foreground" Value="#666"/>
+	</Style>
+	
+	
+	<Design.PreviewWith>
+		<RadioButton Classes="TabItem:selected" Content="Comanda"/>
+	</Design.PreviewWith>
+
+
 
 </Styles>
+
+
+

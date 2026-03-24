@@ -1,222 +1,511 @@
-
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="using:HamburgueriaAPP.ViewModels"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1400" d:DesignHeight="800"
-        x:Class="HamburgueriaAPP.Views.MainWindow"
-        x:DataType="vm:ClienteViewModel"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		x:Class="HamburgueriaAPP.Views.MainWindow"
+		Title="Burguer House"
+		Width="1350" Height="800"
+		Background="#121212"
+		Foreground="White"
+		SystemDecorations="None"
+		ExtendClientAreaToDecorationsHint="True"
+		ExtendClientAreaChromeHints="PreferSystemChrome"
+		PointerPressed="OnPointerPressed"
+		ExtendClientAreaTitleBarHeightHint="-1">
 
-        ExtendClientAreaToDecorationsHint="True"
-        ExtendClientAreaChromeHints="NoChrome"
-        ExtendClientAreaTitleBarHeightHint="35"
-
-        Icon="/Assets/avalonia-logo.ico"
-        Title="HamburgueriaAPP">
-
-    <Design.DataContext>
-        <vm:ClienteViewModel/>
-    </Design.DataContext>
-
-    <!-- GRID PRINCIPAL -->
-    <Grid RowDefinitions="35,70,*"
-          ColumnDefinitions="3*,1*">
-
-        <!-- Barra de Controle -->
-        <Border Grid.Row="0"
-                Grid.ColumnSpan="2"
-                Background="#000000">
-
-            <DockPanel>
-
-                <TextBlock
-                    Text="Sistema Caixa"
-                    Margin="12"
-                    Foreground="White"
-                    FontSize="12"
-                    VerticalAlignment="Center"/>
-
-                <StackPanel Orientation="Horizontal"
-                            DockPanel.Dock="Right">
-
-                    <Button Content="—" Width="40"/>
-                    <Button Content="□" Width="40"/>
-                    <Button Content="X" Width="40"/>
-
-                </StackPanel>
-
-            </DockPanel>
-
-        </Border>
-
-        <!-- Barra Burguer House -->
-        <Border Grid.Row="1"
-                Grid.ColumnSpan="2"
-                Background="#202020"
-                BorderBrush="#4A4A52"
-                BorderThickness="0,0,0,4">
-
-            <TextBlock
-                Text="Burguer House"
-                Margin="12,6,0,0"
-                Foreground="White"
-                FontSize="40"
-                VerticalAlignment="Center"/>
-
-        </Border>
-
-        <!-- AREA PRODUTOS -->
-        <Border Grid.Row="2"
-                Grid.Column="0"
-                Background="#1E1E1E">
+	<Grid ColumnDefinitions="*, 380">
 
 
-
-            <Grid RowDefinitions="140,*">
-
-                <!-- FILTRO -->
-                <Border Grid.Row="0"
-                        BorderBrush="#3A3A3A"
-                        BorderThickness="0,0,0,1"
-                        Padding="15">
-
-                    <StackPanel Spacing="12">
-
-                        <TextBlock
-                            Text="Filtro de Grupo Produtos"
-                            Foreground="White"
-                            FontSize="24"/>
+		<Grid Grid.Column="0"
+			  RowDefinitions="Auto, Auto, *">
 
 
-                        <WrapPanel >
-
-                            <Button
-                                 Width="220"
-                                 Height="75"
-                                 Margin="0,0,22,0">
-
-                                <StackPanel>
-
-                                    <TextBlock 
-                                        Text="Todos"
-                                        FontSize="22"
-                                        Margin="12,20,12,0"
-                                        HorizontalAlignment="Center">
-                                    </TextBlock>
-									
-                                </StackPanel>
-                            
-                            </Button>
-                               
-                                     
-
-                            <Button
-                                 Width="220"
-                                 Height="75"
-                                 Margin="0,0,22,0">
-
-                                <StackPanel>
-
-                                    <TextBlock 
-                                        Text="Hambuerguer"
-                                        FontSize="22"
-                                        Margin="12,20,12,0"
-                                        HorizontalAlignment="Center">
-                                    </TextBlock>
-									
-                                </StackPanel>
-                            
-                            </Button>
-
-                             <Button
-                                 Width="220"
-                                 Height="75"
-                                 Margin="0,0,22,0">
-
-                                <StackPanel>
-
-                                    <TextBlock 
-                                        Text="Bebidas"
-                                        FontSize="22"
-                                        Margin="12,20,12,0"
-                                        HorizontalAlignment="Center">
-                                    </TextBlock>
-									
-                                </StackPanel>
-                            
-                            </Button>
+			<Border Grid.Row="0"
+					Background="#1A1A1A"
+					Padding="25,45,25,20"
+					BorderBrush="#333"
+					BorderThickness="0,0,0,1"
+					PointerPressed="OnPointerPressed">
 
 
-                             <Button
-                                 Width="220"
-                                 Height="75"
-                                 Margin="0,0,12,0">
-
-                                <StackPanel>
-
-                                    <TextBlock 
-                                        Text="Sobremesa"
-                                        FontSize="22"
-                                        Margin="12,20,12,0"
-                                        HorizontalAlignment="Center">
-                                    </TextBlock>
-									
-                                </StackPanel>
-                            
-                            </Button>
+				<StackPanel Orientation="Horizontal"
+							Spacing="15">
 
 
-                        </WrapPanel>
+					<TextBlock Text="🍔"
+							   FontSize="40"/>
 
-                    </StackPanel>
-
-                </Border>
-
-                <!-- PRODUTOS -->
-                <Border Grid.Row="1"
-                        Padding="15">
-
-                    <StackPanel Spacing="12">
-
-                        <TextBlock
-                            Text="Escolha o Produto"
-                            Foreground="White"
-                            FontSize="24"/>
-
-                        <UniformGrid Columns="4"
-                                     Rows="3">
-
-                            <Button Content="🍔"/>
-
-                            <Button Content="🥤"/>
-
-                            <Button Content="🥫"/>
-
-                            <Button Content="🍺"/>
-
-                            <Button Content="🍟"/>
-
-                            <Button Content="🍰"/>
-
-                            <Button Content="🥧"/>
+					<TextBlock Text="Burguer House"
+							   FontSize="32"
+							   FontWeight="Black"
+							   VerticalAlignment="Center"/>
 
 
-                        </UniformGrid>
+				</StackPanel>
 
-                    </StackPanel>
 
-                </Border>
+			</Border>
 
-            </Grid>
 
-        </Border>
+			<Border Grid.Row="1"
+					Background="#161616"
+					Padding="25,20,56,12"
+					Margin="0,0,0,0"
+					BorderBrush="#333"
+					BorderThickness="0,0,0,1">
 
-        <!-- AREA PEDIDO -->
-        <Border Grid.Row="2"
-                Grid.Column="1"
-                Background="#2F2F2F"/>
+				<StackPanel>
 
-    </Grid>
+					<TextBlock Text="FILTRO DE GRUPO PRODUTOS"
+							   FontSize="12"
+							   FontWeight="Bold"
+							   Foreground="#666"
+							   Margin="0,5,0,10"
+							   LetterSpacing="1"/>
+
+					<UniformGrid x:Name="FiltroGrid" Columns="5">
+
+						<RadioButton Content="TODOS"
+									 Classes="filter"
+									 GroupName="FiltroProdutos"
+									 IsChecked="True"
+									 HorizontalAlignment="Stretch"/>
+
+						<RadioButton Content="HAMBURGUER"
+									 Classes="filter"
+									 GroupName="FiltroProdutos"
+									 HorizontalAlignment="Stretch"/>
+
+						<RadioButton Content="PORÇÕES"
+									 Classes="filter" 
+									 GroupName="FiltroProdutos"
+									 HorizontalAlignment="Stretch"/>
+
+
+						<RadioButton Content="BEBIDAS"
+									 Classes="filter" 
+									 GroupName="FiltroProdutos"
+									 HorizontalAlignment="Stretch"/>
+
+						<RadioButton Content="SOBREMESAS"
+									 Classes="filter"
+									 GroupName="FiltroProdutos"
+									 HorizontalAlignment="Stretch"/>
+
+					</UniformGrid>
+
+
+				</StackPanel>
+
+
+			</Border>
+
+
+
+			<ScrollViewer Grid.Row="2"
+						  Padding="30"
+						  VerticalScrollBarVisibility="Auto">
+
+				<StackPanel Margin="0,0,2,0">
+
+					<TextBlock Text="ESCOLHA O PRODUTO"
+							   FontSize="11"
+							   FontWeight="Bold"
+							   Foreground="#666"
+							   Margin="5,0,0,20"
+							   LetterSpacing="1"/>
+
+
+					<WrapPanel x:Name="PainelProdutos" 
+							   Orientation="Horizontal"
+							   HorizontalAlignment="Left">
+
+
+						<Button Classes="productCard"
+								Tag="HAMBURGUER">
+
+
+							<StackPanel Spacing="10">
+
+
+								<TextBlock Text="🍔"
+										   FontSize="45"
+										   HorizontalAlignment="Center"/>
+
+
+								<TextBlock Text="X-Burguer"
+										   FontWeight="Medium" 
+										   HorizontalAlignment="Center"/>
+
+
+								<TextBlock Text="R$ 22,00"
+										   FontSize="12"
+										   Foreground="Yellow"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Button>
+
+
+
+						<Button Classes="productCard"
+								Tag="PORÇÕES">
+
+
+							<StackPanel Spacing="10">
+
+								<TextBlock Text="🍟"
+										   FontSize="45"
+										   HorizontalAlignment="Center"/>
+
+
+								<TextBlock Text="Batata"
+										   FontWeight="Medium"
+										   HorizontalAlignment="Center"/>
+
+
+								<TextBlock Text="R$ 15,00"
+										   FontSize="12"
+										   Foreground="Yellow"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Button>
+
+
+
+						<Button Classes="productCard"
+								Tag="BEBIDAS">
+
+
+							<StackPanel Spacing="10">
+
+								<TextBlock Text="🥤"
+										   FontSize="45"
+										   HorizontalAlignment="Center"/>
+
+
+								<TextBlock Text="Coca-Cola"
+										   FontWeight="Medium" 
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="R$ 6,00"
+										   FontSize="12"
+										   Foreground="Yellow"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Button>
+
+
+
+						<Button Classes="productCard"
+								Tag="BEBIDAS">
+
+
+							<StackPanel Spacing="10">
+
+								<TextBlock Text="🍺"
+										   FontSize="45"
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="Cerveja"
+										   FontWeight="Medium"
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="R$ 18,00"
+										   FontSize="12"
+										   Foreground="Yellow"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Button>
+
+
+
+						<Button Classes="productCard"
+								Tag="SOBREMESAS">
+
+
+							<StackPanel Spacing="10">
+
+								<TextBlock Text="🍰"
+										   FontSize="45"
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="Bolo"
+										   FontWeight="Medium"
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="R$ 16,50"
+										   FontSize="12"
+										   Foreground="Yellow"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Button>
+
+
+
+					</WrapPanel>
+
+
+				</StackPanel>
+
+
+			</ScrollViewer>
+
+
+		</Grid>
+
+
+		<Border Grid.Column="1"
+				Background="#1A1A1A"
+				BorderBrush="#333"
+				BorderThickness="1,0,0,0">
+
+			<TabControl Background="Transparent"
+						Padding="0" 
+						Margin="0,35,0,0">
+
+				<TabItem Header="COMANDA" Padding="25,2,2,2" Margin="0,0,10,0">
+
+
+					<Grid RowDefinitions="Auto, Auto, *, Auto, Auto" Margin="20">
+
+						<Button Grid.Row="0"
+								Content="⚙ Configurações"
+								Background="Transparent"
+								BorderThickness="0" 
+								Foreground="#555" 
+								FontSize="11" 
+								HorizontalAlignment="Right" 
+								Margin="0,0,0,10"/>
+
+
+						<Grid Grid.Row="1" ColumnDefinitions="*, Auto" Margin="0,0,0,20">
+
+							<StackPanel Spacing="5">
+
+								<TextBlock Text="Código"
+										   Foreground="#666"
+										   FontSize="12"/>
+
+								<TextBox Watermark="000"
+										 Height="45"
+										 Background="#252525"
+										 BorderThickness="1"
+										 BorderBrush="#333"/>
+
+							</StackPanel>
+
+
+
+							<StackPanel Grid.Column="1"
+										Margin="10,0,0,0"
+										Spacing="5">
+
+								<TextBlock Text="Qtde"
+										   Foreground="#666"
+										   FontSize="12"/>
+
+								<NumericUpDown Value="1"
+											   Height="45"
+											   Width="110"
+											   Background="#252525"/>
+
+
+							</StackPanel>
+
+						</Grid>
+
+
+						<Border Grid.Row="2"
+								CornerRadius="8"
+								Background="#121212"
+								BorderBrush="#333" 
+								BorderThickness="1"
+								Margin="0,0,0,20">
+
+
+							<StackPanel VerticalAlignment="Center"
+										Spacing="10">
+
+								<TextBlock Text="🛒"
+										   FontSize="40
+										   " Opacity="0.2"
+										   HorizontalAlignment="Center"/>
+
+								<TextBlock Text="Carrinho Vazio"
+										   Foreground="#444"
+										   HorizontalAlignment="Center"/>
+
+							</StackPanel>
+
+
+						</Border>
+
+
+
+						<StackPanel Grid.Row="3"
+									Margin="0,0,0,15">
+
+							<TextBlock Text="VALOR TOTAL" 
+									   FontSize="12"
+									   FontWeight="Bold"
+									   Foreground="#666"/>
+
+
+							<Border Background="#252525"
+									Padding="20"
+									CornerRadius="10"
+									BorderBrush="#333"
+									BorderThickness="1" 
+									Margin="0,8">
+
+
+								<TextBlock Text="R$ 0,00"
+										   FontSize="50"
+										   FontWeight="Black"
+										   HorizontalAlignment="Right"
+										   Foreground="#FFFF"/>
+
+							</Border>
+
+
+						</StackPanel>
+
+
+						<UniformGrid Grid.Row="4" Columns="2" Height="70">
+
+							<Button Content="CANCELAR"
+									Margin="0,0,5,0" 
+									Foreground="#FF6666"
+									Background="#2D1A1A"
+									FontWeight="Bold"/>
+
+
+							<Button Content="FINALIZAR"
+									Margin="5,0,0,0" 
+									Foreground="#66FF66"
+									Background="#1A2D1A" 
+									FontWeight="Bold"/>
+
+						</UniformGrid>
+
+					</Grid>
+
+
+				</TabItem>
+
+
+
+				<TabItem Header="CLIENTE">
+
+
+					<StackPanel Margin="20" Spacing="15">
+
+						<TextBlock Text="BUSCAR CLIENTE"
+								   FontSize="11"
+								   FontWeight="Bold"
+								   Foreground="#666"/>
+
+						<Grid ColumnDefinitions="*, Auto">
+
+							<TextBox Watermark="CPF ou Nome..."
+									 Height="45"
+									 Background="#252525"/>
+
+							<Button Grid.Column="1"
+									Content="🔍"
+									Width="50"
+									Margin="8,0,0,0"/>
+
+						</Grid>
+
+
+
+						<Separator Background="#333" Margin="0,10"/>
+
+
+						<TextBlock Text="CADASTRO RÁPIDO"
+								   FontSize="11"
+								   FontWeight="Bold"
+								   Foreground="#666"/>
+
+
+						<TextBox Watermark="Nome Completo"
+								 Height="45"
+								 Background="#252525"
+								 Margin="0,5"/>
+
+						<TextBox Watermark="Telefone / WhatsApp"
+								 Height="45" 
+								 Background="#252525"
+								 Margin="0,5"/>
+
+
+						<Button Content="CADASTRAR E VINCULAR" 
+								Height="50"
+								Background="#333"
+								HorizontalAlignment="Stretch" 
+								Margin="0,10,0,0"/>
+
+
+					</StackPanel>
+
+
+				</TabItem>
+
+			</TabControl>
+
+		</Border>
+
+		<StackPanel Grid.Column="1" 
+					Orientation="Horizontal" 
+					HorizontalAlignment="Right" 
+					VerticalAlignment="Top" 
+					Margin="0,2,6,0" 
+					Spacing="2">
+
+			<Button Content="—"
+					Click="Minimizar_Click"
+					Background="Transparent"
+					Foreground="White"
+					Padding="13,6,0,0"
+					Width="40"
+					Height="30"
+					FontSize="12"/>
+
+			<Button Content="⬜"
+					Click="Maximizar_Click"
+					Background="Transparent"
+					Foreground="White"
+					Padding="13,8,0,0"
+					Width="40"
+					Height="30"
+					FontSize="9"/>
+
+			<Button Content="✕"
+					Click="Fechar_Click"
+					Background="Transparent"
+					Foreground="White"
+					Padding="14,6"
+					Width="40"
+					Height="30"
+					FontSize="12" 
+					FontWeight="Bold"/>
+
+		</StackPanel>
+
+	</Grid>
 
 </Window>
